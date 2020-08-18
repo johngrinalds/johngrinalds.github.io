@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Rent vs. Drive Calc</title>
+        <style>
+
+            body {
+                background-image: url("https://skoda-motorsport.s3.amazonaws.com/com/2018/05/the-top-10-moments-from-more-than-half-a-century-of-le-mans-domination.jpeg");
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 100% auto;
+                background-color: #cccccc;
+            }
+
+            h1 {
+                font-size: 3em;
+                text-align: center;
+                border: groove;
+                padding: 10px;
+                border-left: none;
+                border-right: none;
+                margin: 20px;
+                color: #ff922bb4;
+            }
+
+            h2 {
+                margin-left: 5px;
+                text-align: left;
+            }
+
+            input {
+                margin: 5px;
+            }
+
+            div {
+                width: 400px;
+                text-align: right;
+                background-color: #ff922bb4;
+                padding: 30px;
+                border-radius: 20px;
+                padding-top: 10px;
+                margin-left: 20px;
+            }
+
+        </style>
+    </head>
+    <body>
+        
+        <h1>Rent vs. Drive Calculator</h1>
+
+
+        <div>
+
+        <h2>Your Car's Data</h2>
+
+
+            <label> Current Value ($)
+                <input id = "worth" type = "text" value = 4500>
+            </label>
+            <br>
+            <label> Miles Left?
+                <input id = "milesLeft" type = "text" value = 90000>
+            </label>
+            <br>
+            <label> MPG
+                <input id = "yourMPG" type = "text" value = 41>
+            </label>
+        
+
+        <h2>Rental Car Data</h2>
+
+       
+            <label> Rental Cost ($)
+                <input id = "rentalCost" type = "text" value = 103.53>
+            </label>
+            <br>
+            <label> Expected MPG
+                <input id = "rentalMPG" type = "text" value = 35>
+            </label>
+        
+
+        <h2>Trip Data</h2>
+
+                    <label> Expected Trip (Miles)
+                <input id = "tripMiles" type = "text" value = 822>
+            </label>
+            <br>
+            <label> Gas Cost ($)
+                <input id = "gasCost" type = "text" value = 2.15>
+            </label>
+        </div> 
+
+        <br>
+
+        <div>
+        <h2>Calculations</h2>
+
+        <h3 id = "pcpm">Personal Car Cost Per Mile ($): </h3>
+        <h3 id = "rcpm">Rental Car Cost Per Mile ($): </h3>
+        </div>
+
+
+
+        <script>
+            
+            var bodyEl = document.getElementsByTagName("body");
+
+            var calculateMyCar = function() {
+                var worth = document.getElementById("worth").value;
+                var milesLeft = document.getElementById("milesLeft").value;
+                var yourMpg = document.getElementById("yourMPG").value;
+                var miles = document.getElementById("tripMiles").value;
+                var gasCost = document.getElementById("gasCost").value;
+
+                // Calculate cost of using personal car
+                var yourPerMile = Math.round((worth/milesLeft + gasCost/yourMpg)*1000)/1000;
+                var yourCost = document.getElementById("pcpm");
+                yourCost.innerHTML = "Personal Car Cost Per Mile ($): "+ yourPerMile;
+
+
+                var rentalCost = document.getElementById("rentalCost").value;
+                var rentalMPG = document.getElementById("rentalMPG").value;
+
+                // Calculate cost of using rental car
+                var rentPerMile = Math.round((rentalCost/miles + gasCost/rentalMPG)*1000)/1000;
+                var rentalCost = document.getElementById("rcpm");
+                rentalCost.innerHTML = "Rental Car Cost Per Mile ($): "+ rentPerMile;
+
+            };
+            
+            //  Run the function to initialize the costs according to the default values
+            calculateMyCar();
+
+            // This will trigger the function to run anytime there is a key pressed on the page
+            document.addEventListener("keyup", calculateMyCar);
+            
+        </script>
+    </body>
+</html>
