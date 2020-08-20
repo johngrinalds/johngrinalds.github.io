@@ -3,14 +3,17 @@
     <head>
         <meta charset="UTF-8">
         <title>Rent vs. Drive Calc</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
         <style>
 
             body {
+                font-family: 'Montserrat', serif;
                 background-image: url("https://skoda-motorsport.s3.amazonaws.com/com/2018/05/the-top-10-moments-from-more-than-half-a-century-of-le-mans-domination.jpeg");
                 background-repeat: no-repeat;
                 background-position: center;
                 background-size: 100% auto;
                 background-color: #cccccc;
+                
             }
 
             h1 {
@@ -20,8 +23,10 @@
                 padding: 10px;
                 border-left: none;
                 border-right: none;
+                border-radius: 5px;
                 margin: 20px;
-                color: #ff922bb4;
+                color: black;
+                background-color: #c9e3f8;
             }
 
             h2 {
@@ -36,11 +41,16 @@
             div {
                 width: 400px;
                 text-align: right;
-                background-color: #ff922bb4;
+                background-color: #ff922bc5;
                 padding: 30px;
                 border-radius: 20px;
                 padding-top: 10px;
                 margin-left: 20px;
+            }
+
+            img {
+                position: relative;
+                top: 3px;
             }
 
         </style>
@@ -57,14 +67,17 @@
 
             <label> Current Value ($)
                 <input id = "worth" type = "text" value = 4500>
+                <img src = "ques.png" height="15" title="How much you could get for your car if you sold it now">
             </label>
             <br>
             <label> Miles Left?
                 <input id = "milesLeft" type = "text" value = 90000>
+                <img src = "ques.png" height="15" title="How many more miles you estimate you will drive before you get rid of it">
             </label>
             <br>
             <label> MPG
                 <input id = "yourMPG" type = "text" value = 41>
+                <img src = "ques.png" height="15" title="Your car's MPG">
             </label>
         
 
@@ -73,10 +86,12 @@
        
             <label> Rental Cost ($)
                 <input id = "rentalCost" type = "text" value = 103.53>
+                <img src = "ques.png" height="15" title="Total cost of a rental car">
             </label>
             <br>
             <label> Expected MPG
                 <input id = "rentalMPG" type = "text" value = 35>
+                <img src = "ques.png" height="15" title="What you estimate the rental car's MPG to be">
             </label>
         
 
